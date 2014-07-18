@@ -1,0 +1,230 @@
+@import element
+
+.app
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    +gradient(#cbcbcb, #768ba4, #1c2f5a)
+*
+    -webkit-user-select: none
+.win
+    +transition(0.2s, ease-out)
+    +rounded(5px)
+    display: inline-block
+    position: absolute
+    overflow: hidden
+    background-color: rgba(0, 0, 0, 1.0)
+    // background: rgba(0, 0, 0, 1.0) url(../images/fns/GP.png) 0 20px no-repeat
+    background-size: 100% 100% // cover
+    border: 1px #000 solid
+    
+    &.dragging, &.resizing
+        +transition(0s, linear)
+
+    &.selected
+        z-index: 99
+        +drop-shadow(0, 0, 30px, 0.4)
+
+    &.hidden
+        display: none
+
+    .bg 
+        width: 100%
+        height: 100%
+
+    .title_bar
+        display: inline-block
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 20px
+        cursor: move
+        background-color: rgba(192, 192, 192, 1.0)
+        
+        .win_ctrls
+            color: #FFF
+            outline: 0
+            background: #b4b4b4 url(../images/win_ctrls_shot.png) -29px 0 no-repeat
+            border: none
+            position: absolute
+            top: 2px
+            right: 2px
+            height: 15px
+            width: 61px
+            cursor: pointer
+            &:hover 
+                background-position: -29px -15px
+
+        .win_opts
+            color: #FFF
+            outline: 0
+            background: #b4b4b4 url(../images/win_ctrls_shot.png) 0 0 no-repeat
+            border: none
+            position: absolute
+            top: 2px
+            right: 62px
+            height: 15px
+            width: 30px
+            cursor: pointer
+            &:hover 
+                background-position: 0 -15px
+
+        .options_menu
+            z-index: 5
+            position: absolute
+            top: 16px
+            right: 62px
+            height: 40px
+            width: 140px
+            background-color: #404040
+
+            &.hidden
+                display: none
+
+            .un_bttn
+                position: absolute
+                left: 5px
+                top: 5px
+                width: 60px
+                height: 30px
+                background-color: #808080
+            .re_bttn
+                position: absolute
+                left: 75px
+                top: 5px
+                width: 60px
+                height: 30px
+                background-color: #808080
+
+        
+
+    .resize
+        display: inline-block
+        position: absolute
+        border: none
+        &.top
+            top: 0
+            left: 0
+            width: 100%
+            height: 5px
+            cursor: ns-resize
+            border-top: 2px solid rgba(216, 216, 216, 1.0)
+        &.right
+            top: 0
+            right: 0
+            width: 10px
+            height: 100%
+            cursor: ew-resize
+            border-right: 2px solid rgba(216, 216, 216, 1.0)
+        &.bot
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 10px
+            cursor: ns-resize
+            border-bottom: 2px solid rgba(216, 216, 216, 1.0)
+        &.left
+            top: 0
+            left: 0
+            width: 10px
+            height: 100%
+            cursor: ew-resize
+            border-left: 2px solid rgba(216, 216, 216, 1.0)
+        &.bot_right
+            bottom: 0
+            right: 0
+            width: 20px
+            height: 20px
+            cursor: nwse-resize
+
+    // &.red // .bg
+    //     background-image: url(../images/fns/GP.png)
+    // &.green
+    //     background-image: url(../images/fns/CN.png)
+    // &.blue
+    //     background-image: url(../images/fns/DES.png)
+    // &.yellow
+    //     background-image: url(../images/fns/N.png)
+    // &.orange
+    //     background-image: url(../images/fns/FA.png)
+    // &.purple
+    //     background-image: url(../images/fns/WB.png)
+    // &.cyan
+    //     background-image: url(../images/fns/ANR.png)
+
+    .win_history
+        display: none
+        pointer-events: none
+        position: absolute
+        right: 0
+        top: 20px
+        width: 200px
+        height: 100%
+        background-color: rgba(255, 255, 255, 0.3)
+
+.bbbar
+    position: fixed
+    display: inline-block
+    width: 100%
+    height: 40px
+    top: 0
+    left: 0
+    background-color: rgba(0, 0, 0, 0.4)
+
+button
+    +rounded(3px)
+    outline: none
+    position: absolute
+    width: 80px
+    height: 100%
+    top: 0
+    font-size: 12px
+    background-color: rgba(255, 255, 255, 0.4)
+
+    border: none
+    &.undo
+        left: 100px
+        background-position: 2px 2px
+
+    &.redo
+        left: 182px
+        background-position: -35px 2px
+
+    &:hover
+        opacity: 0.6
+    // &.disabled
+    //     opacity: 0.6
+    //     color: rgba(0, 0, 0, 0.5)
+
+.history
+    display: none
+    position: fixed
+    right: 0
+    top: 35px
+    width: 300px
+    height: 100%
+    background-color: rgba(255, 255, 255, 0.1)
+
+.history_item
+    +box-sizing()
+    color: #000
+    position: relative
+    height: 22px
+    width: 290px
+    margin: 2px
+    padding: 2px 10px
+    background-color: rgba(255, 255, 255, 0.2)
+    &.selected
+        background-color: rgba(255, 255, 255, 0.8)
+
+.app.show_history
+    .history, .win_history 
+        display: block
+
+
+
+
