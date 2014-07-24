@@ -1,13 +1,16 @@
 @import element
 
 .app
+    +transition(0.5s, cubic-bezier(0.23, 1, 0.32, 1))
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
     position: absolute
     top: 0
     left: 0
     width: 100%
     height: 100%
-    +gradient(#cbcbcb, #768ba4, #1c2f5a)
+    +gradient(#cbcbcb, #4f6277, #394358)
+    &.scooched_right
+        left: 300px
 *
     -webkit-user-select: none
 .win
@@ -17,7 +20,7 @@
     position: absolute
     overflow: hidden
     background-color: rgba(0, 0, 0, 1.0)
-    // background: rgba(0, 0, 0, 1.0) url(../images/fns/GP.png) 0 20px no-repeat
+    // background: rgba(0, 0, 0, 1.0) GP.png) 0 20px no
     background-size: 100% 100% // cover
     border: 1px #000 solid
     
@@ -141,20 +144,20 @@
             height: 20px
             cursor: nwse-resize
 
-    // &.red // .bg
-    //     background-image: url(../images/fns/GP.png)
-    // &.green
-    //     background-image: url(../images/fns/CN.png)
-    // &.blue
-    //     background-image: url(../images/fns/DES.png)
-    // &.yellow
-    //     background-image: url(../images/fns/N.png)
-    // &.orange
-    //     background-image: url(../images/fns/FA.png)
-    // &.purple
-    //     background-image: url(../images/fns/WB.png)
-    // &.cyan
-    //     background-image: url(../images/fns/ANR.png)
+    &.red // .bg
+        background-color: rgba(255, 0, 0, 0.2) 
+    &.green
+        background-color: rgba(0, 255, 0, 0.2) 
+    &.blue
+        background-color: rgba(0, 0, 255, 0.2) 
+    &.yellow
+        background-color: rgba(255, 255, 0, 0.2)
+    &.orange
+        background-color: rgba(255, 178, 0, 0.2) 
+    &.purple
+        background-color: rgba(255, 0, 255, 0.2) 
+    &.cyan
+        background-color: rgba(0, 255, 255, 0.2) 
 
     .win_history
         display: none
@@ -187,11 +190,11 @@ button
 
     border: none
     &.undo
-        left: 100px
+        right: 100px
         background-position: 2px 2px
 
     &.redo
-        left: 182px
+        right: 182px
         background-position: -35px 2px
 
     &:hover
@@ -204,7 +207,7 @@ button
     display: none
     position: fixed
     right: 0
-    top: 35px
+    top: 40px
     width: 300px
     height: 100%
     background-color: rgba(255, 255, 255, 0.1)
@@ -224,6 +227,57 @@ button
 .app.show_history
     .history, .win_history 
         display: block
+
+
+
+
+//
+// 
+//
+a 
+    color: #0099FF
+    text-decoration: none
+    &:hover  
+        color: #00cCF0
+
+.info
+    +box-sizing()
+    +transition(0.5s, cubic-bezier(0.23, 1, 0.32, 1))
+    position: absolute
+    padding: 20px
+    top: 0px
+    width: 300px
+    height: 100%
+    background-color: #000
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+    color: #a0a0a0
+
+    h4
+        color: #e0e0e0
+        font-weight: normal
+
+    &.closed 
+        left: -300px
+    &.open 
+        left: 0px
+
+#nub
+    +box-sizing()
+    +transition(0.3s, linear)
+    position: absolute
+    padding: 15px 10px 10px
+    right: -50px
+    top: 0
+    width: 50px
+    height: 50px
+    background-color: #000
+    cursor: pointer
+    &:hover 
+        background-color: #FFF
+        color: #00CCFF
+//
+//
+//
 
 
 

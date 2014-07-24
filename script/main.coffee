@@ -713,6 +713,9 @@ App =
         # log key_pressed
 
     windowClicked: (el) ->
+
+        log el
+
         win = @getWindow el
         @win_manager.setSelected win
 
@@ -729,6 +732,32 @@ App =
             win.show false
 
 App.init()
+
+# DEMO STUFF
+
+info_panel = d.querySelector '.info'
+showInfoPanel = ->
+    App.el.classList.add 'scooched_right'
+    info_panel.classList.add 'open'
+
+hideInfoPanel = ->
+    App.el.classList.remove 'scooched_right'
+    info_panel.classList.remove 'open'
+
+toggleInfoPanel = ->
+    if info_panel.classList.contains 'open'
+        hideInfoPanel()
+    else 
+        showInfoPanel()
+
+clicked = (evt) ->
+    if evt.target.id is 'nub'
+        toggleInfoPanel();
+    # if evt.target.id is 'main'
+    #     hideInfoPanel();
+
+d.addEventListener 'click', clicked
+
 
 
 
